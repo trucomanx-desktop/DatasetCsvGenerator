@@ -99,7 +99,7 @@ def main():
         action="store_true",
         help=(
             "Use the first-level directory (closest to base dir) as label.\n"
-            "Example: base/class1/subdir/image.png → label = class1"
+            "Example: class1/subdir/image.png → label = class1"
         )
     )
 
@@ -108,7 +108,7 @@ def main():
         action="store_true",
         help=(
             "Use the last directory (closest to file) as label (default).\n"
-            "Example: base/class1/subdir/image.png → label = subdir"
+            "Example: class1/subdir/image.png → label = subdir"
         )
     )
 
