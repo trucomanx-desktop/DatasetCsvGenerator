@@ -53,13 +53,15 @@ def main():
 
     parser.add_argument(
         "--output-csv-file",
+        type=str,
         default="dataset.csv",
-        help="Output CSV file name (default: dataset.csv)"
+        help="Output CSV file name (default: %(default)s)"
     )
 
     parser.add_argument(
         "--input-base-dir",
         required=True,
+        type=str,
         help=(
             "Base directory containing images organized in subdirectories.\n"
             "The folder structure determines the labels."
@@ -85,7 +87,7 @@ def main():
         default=["filename", "label"],
         help=(
             "CSV header (2 columns).\n"
-            "Default: filename label"
+            "(default: %(default)s)"
         )
     )
 

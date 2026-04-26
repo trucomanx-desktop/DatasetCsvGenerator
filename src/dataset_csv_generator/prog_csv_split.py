@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-#!/usr/bin/python
-
 import sys
 import os
 import signal
@@ -56,23 +54,26 @@ Examples:
     # -------- Output --------
     parser.add_argument(
         "-o", "--output-dir",
+        type=str,
         default=".",
         metavar="DIR",
-        help="Directory where output files will be saved (default: current directory)"
+        help="Directory where output files will be saved (default: %(default)s)"
     )
 
     parser.add_argument(
         "--train-file",
+        type=str,
         default="train.csv",
         metavar="NAME",
-        help="Filename for the train dataset (default: train.csv)"
+        help="Filename for the train dataset (default: %(default)s)"
     )
 
     parser.add_argument(
         "--test-file",
+        type=str,
         default="test.csv",
         metavar="NAME",
-        help="Filename for the test dataset (default: test.csv)"
+        help="Filename for the test dataset (default: %(default)s)"
     )
 
     # -------- Parameters --------
@@ -81,21 +82,30 @@ Examples:
         type=float,
         default=16.66,
         metavar="PERCENT",
-        help="Percentage of dataset to use as test set (0–100, default: 16.66)"
+        help="Percentage of dataset to use as test set (0–100, default: %(default)s)"
     )
 
     parser.add_argument(
         "-c", "--column",
+        type=str,
         default="",
         metavar="COLUMN",
         help="""
 Column name used for stratification.
 
 If not provided, the last column of the CSV will be used.
-Must be a categorical column (e.g. class labels).
+Must be a categorical column (default: %(default)s).
 """
     )
 
+
+    parser.add_argument(
+        "-s", "--seed",
+        default=42,
+        type=int,
+        metavar="SEED",
+        help="Value of seed in random split of dataset (default: %(default)s)"
+    )
 
     args = parser.parse_args()
 
@@ -118,7 +128,8 @@ def main():
             csv_train_file=csv_train_file,
             csv_test_file=csv_test_file,
             test_factor=args.test_size,
-            column_name=args.column
+            column_name=args.column,
+            random_state=args.seed
         )
 
         print("✅ Work completed successfully")
