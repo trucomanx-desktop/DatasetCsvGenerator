@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dataset_csv_generator"
-version = "0.1.6"
+version = "0.1.7"
 description = "Generates CSV files from a classification dataset"
 readme = "README.md"
 authors = [{name = "Fernando Pujaico Rivera", email = "fernando.pujaico.rivera@gmail.com"}]
@@ -41,4 +41,4 @@ dependencies = [
 packages = ["dataset_csv_generator", "dataset_csv_generator.modules"]
 
 [tool.setuptools.package-data]
-"dataset_csv_generator" = ["icons/logo.png"]
+"dataset_csv_generator" = ["icons/*.png"]

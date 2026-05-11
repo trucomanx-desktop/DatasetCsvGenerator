@@ -29,7 +29,8 @@ from PyQt5.QtCore import Qt, QUrl
 
 import dataset_csv_generator.about as about
 import dataset_csv_generator.modules.configure as configure 
-from   dataset_csv_generator.modules.wabout  import show_about_window
+from   dataset_csv_generator.modules.resources import resource_path
+from   dataset_csv_generator.modules.wabout    import show_about_window
 from   dataset_csv_generator.desktop import create_desktop_file, create_desktop_directory, create_desktop_menu
 
 # Path to config file
@@ -91,8 +92,7 @@ class MainWindow(QMainWindow):
 
         ## Icon
         # Get base directory for icons
-        base_dir_path = os.path.dirname(os.path.abspath(__file__))
-        self.icon_path = os.path.join(base_dir_path, 'icons', 'logo.png')
+        self.icon_path = resource_path('icons', 'logo.png')
         self.setWindowIcon(QIcon(self.icon_path)) 
         
         self.toolbar = self.addToolBar("Main")
@@ -191,17 +191,23 @@ class MainWindow(QMainWindow):
         spacer.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
 
         #
-        self.configure_action = QAction(QIcon.fromTheme("document-properties"), CONFIG["toolbar_configure"], self)
+        self.configure_action = QAction(QIcon(resource_path('icons', 'text-configure.png')), 
+                                        CONFIG["toolbar_configure"], 
+                                        self)
         self.configure_action.setToolTip(CONFIG["toolbar_configure_tooltip"])
         self.configure_action.triggered.connect(self.open_configure_editor)
         
         #
-        self.about_action = QAction(QIcon.fromTheme("help-about"), CONFIG["toolbar_about"], self)
+        self.about_action = QAction(QIcon(resource_path('icons', 'status_help.png')), 
+                                    CONFIG["toolbar_about"], 
+                                    self)
         self.about_action.setToolTip(CONFIG["toolbar_about_tooltip"])
         self.about_action.triggered.connect(self.open_about)
         
         # Coffee
-        self.coffee_action = QAction(QIcon.fromTheme("emblem-favorite"), CONFIG["toolbar_coffee"], self)
+        self.coffee_action = QAction(   QIcon(resource_path('icons', 'emote-love.png')), 
+                                        CONFIG["toolbar_coffee"], 
+                                        self)
         self.coffee_action.setToolTip(CONFIG["toolbar_coffee_tooltip"])
         self.coffee_action.triggered.connect(self.on_coffee_action_click)
 
