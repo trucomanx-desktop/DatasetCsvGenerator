@@ -23,7 +23,7 @@ csv-split-gui
 Installing `dataset_csv_generator` program
 
 ```bash
-git clone https://github.com/trucomanx/DatasetCsvGenerator.git
+git clone https://github.com/trucomanx-desktop/DatasetCsvGenerator.git
 cd DatasetCsvGenerator
 pip install -r requirements.txt
 cd src
